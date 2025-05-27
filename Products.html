@@ -1,0 +1,1384 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+    
+
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ancizar+Serif&display=swap" rel="stylesheet">
+
+    <style>
+
+       
+.action-buttons {
+  white-space: nowrap; 
+}
+
+
+.action-buttons .btn {
+  margin-right: 4px; 
+}
+
+.action-buttons .btn:last-child {
+  margin-right: 0; 
+}
+        body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            font-family: Arial, sans-serif;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+        
+        .navbar {
+            background-color:  	#2d2d30;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 15px;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            font-family: "roboto";
+        }
+        
+        .navbar .dashboard {
+            color: white;
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .navbar .menu-icon {
+            color: white;
+            margin-left: 15px;
+            cursor: pointer;
+        }
+        
+        .navbar .icons {
+            display: flex;
+            align-items: center;
+        }
+        
+        .icons>i {
+            margin-right: 20px;
+        }
+        
+        .profile-dropdown {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .profile-menu {
+            display: none;
+            position: absolute;
+            right: 0;
+            background: white;
+            box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.2);
+            border-radius: 5px;
+            width: 150px;
+            z-index: 1000;
+        }
+        
+        .profile-menu a {
+            display: block;
+            padding: 10px;
+            text-decoration: none;
+            color: black;
+        }
+        
+        .profile-menu a:hover {
+            background: #f1f1f1;
+        }
+        
+        .profile-icon {
+            cursor: pointer;
+            color: white;
+            font-size: 1.2em;
+        }
+        
+        .left-nav {
+            width: 220px;
+            background-color:  	#2d2d30;
+            position: fixed;
+            top: 50px;
+            left: 0;
+            height: calc(100vh - 50px);
+            display: none;
+            padding: 10px;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+            overflow-y: auto;
+            z-index: 999;
+            font-family: "Open Sans";
+        }
+        
+        .left-nav .category {
+            cursor: pointer;
+            margin: 15px 0;
+            color: rgb(255, 255, 255);
+        }
+
+
+        .left-nav .sub-category a div,
+        .left-nav .category {
+        color: rgb(255, 255, 255) !important;
+        text-decoration: none !important;
+        }
+
+        .left-nav .sub-category a:hover div {
+            color: rgb(252, 251, 251) !important;
+            text-decoration: none !important;
+        }
+
+        .left-nav .sub-category a {
+            text-decoration: none !important;
+        }
+        
+        .sub-category {
+            margin-left: 20px;
+            display: none;
+        }
+        
+        .logout-button {
+            background-color: #005f73;
+            color: #d3d3d3;
+            border: none;
+            padding: 10px;
+            width: 100%;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        
+        .logout-button:hover {
+            background-color: #007bff;
+        }
+        
+        .main-content {
+            font-family: "Ancizar Serif ";
+            margin-left: 18%;
+            padding: 70px 0px 0px 0px;
+            transition: margin-left 0.3s;
+        }
+        
+     
+        
+        footer {
+            background-color: #808080;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 30px;
+            width: 100%;
+            /* font-family: "Open Sans"; */
+             font-family: "Ancizar Serif ";
+        }
+        
+
+        .left-nav a {
+        color: inherit !important;
+        text-decoration: none !important;
+        }
+
+        .left-nav a:hover {
+        color: inherit !important;
+        text-decoration: none !important;
+        }
+
+        .profile-icon {
+        cursor: pointer;
+        color: white;
+        font-size: 1.7em; 
+        }
+
+    </style>
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="dashboard">
+            <i class="fas fa-bars menu-icon" id="menuIcon"></i>
+            <span style="margin-left: 10px; font-size: 20px;">Dashboard</span>
+        </div>
+
+        <div class="icons">
+            <div class="profile-dropdown">
+                <i class="fas fa-user-circle profile-icon" id="profileIcon"></i>
+                <div class="profile-menu" id="profileMenu" style=" font-family: Open Sans;">
+                    <a href="">Profile</a>
+                    <a href="Login.html">Logout</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="left-nav" id="leftNav">
+        <div class="category" id="catalog">Inventory<i class="fas fa-chevron-down" id="catalogToggle"></i></div>
+        <div class="sub-category" id="catalogSub">
+           <a href="Products.html"><div>Products</div></a> 
+            <a href="Category.html"><div>Categories</div></a>
+            <a href="Coupon.html"><div>Coupons</div></a>
+        </div>
+        <div class="category" id="customers">Customers <i class="fas fa-chevron-down" id="customersToggle"></i></div>
+        <div class="sub-category" id="customersSub">
+           <a href="CustomerDetails.html"><div>Customer Details</div></a> 
+        </div>
+       <a href=""><div class="category" >Orders</div></a> 
+        <div class="category" id="onlineStore">Online Store <i class="fas fa-chevron-down" id="onlineStoreToggle"></i></div>
+        <div class="sub-category" id="onlineStoreSub" style="display: none;">
+            <a href=""><div>View Store</div></a>
+            <a href="StoreCustomization.html"><div>Store Customization</div></a>
+            <a href="StoreSettings.html"><div>Store Settings</div></a>
+        </div>
+        <a href="OurStaff.html"><div class="category">Our Staff</div></a>
+       <a href="Settings.html"><div class="category" id="settings">Settings</div></a> 
+        <button class="logout-button" onclick="window.location.href='Login.html'"> <i class="fas fa-sign-out-alt"></i> Logout</button>
+    </div>
+
+    <div class="main-content">
+        <h3 class="mb-4" style="font-size:21px; font-weight: 350; font-family:roboto; "><b>Products</b></h3>
+
+    </div>
+
+    <div class="button-container d-flex justify-content-between align-items-center" style="margin-left: 270px; margin-top: 20px; margin-bottom: 30px; padding: 25px; background-color: #f8f9fa; border-radius: 5px; margin-right: 40px;border:1px solid grey">
+        <div class="left-buttons">
+            <div class="btn-group me-2">
+                <button class="btn btn-outline-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <i class="fas fa-file-export"></i> Export
+                </button>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#"><i class="fas fa-file-excel"></i> Export by Excel</a></li>
+                    <li><a class="dropdown-item" href="#"><i class="fas fa-file-csv"></i> Export by CSV</a></li>
+                </ul>
+            </div>
+            <div class="btn-group">
+                <button class="btn btn-outline-success" type="button" data-bs-toggle="collapse" data-bs-target="#importCollapse">
+                    <i class="fas fa-file-import"></i> Import
+                </button>
+                <div id="importCollapse" class="collapse" style="position: absolute; z-index: 1000; width: 300px; margin-top: 5px;">
+                    <div class="card card-body" style="border: 2px dashed #6c757d; padding: 20px;">
+                        <input type="file" id="fileInput" style="display: none;" multiple>
+                        <p class="text-center" onclick="document.getElementById('fileInput').click()" style="cursor: pointer;">Click to select files</p>
+                        <button class="btn btn-primary ms-auto" style="width: fit-content;" onclick="handleImport()">
+                            <i class="fas fa-upload"></i> Import Now
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="right-buttons">
+            <button class="btn btn-outline-danger me-2" id="deleteSelectedBtn">
+                <i class="fas fa-trash"></i> Delete
+            </button>
+            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addProductModal">
+                <i class="fas fa-plus"></i> Add Product
+            </button>
+        </div>
+    </div>
+
+    <div class="filter-container d-flex align-items-center" style="margin-left: 270px; margin-top: 20px; margin-bottom: 30px; padding: 25px; background-color: #f8f9fa; border-radius: 5px; margin-right: 40px; border:1px solid grey">
+        <div class="search-box me-3" style="flex: 1;">
+            <div class="input-group">
+                <input type="text" class="form-control" id="searchInput" placeholder="Search by Order ID or Product Name...">
+                <button class="btn btn-outline-secondary" type="button" id="searchBtn">
+                    <i class="fas fa-search"></i>
+                </button>
+            </div>
+        </div>
+
+        <div class="dropdown me-3">
+            <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="categoryDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                Category
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="categoryDropdown">
+                <li><a class="dropdown-item active" href="#" data-value="all">All Categories</a></li>
+                <li><a class="dropdown-item" href="#" data-value="Necklaces">Necklaces</a></li>
+                <li><a class="dropdown-item" href="#" data-value="Rings">Rings</a></li>
+                <li><a class="dropdown-item" href="#" data-value="Bracelets">Bracelets</a></li>
+                <li><a class="dropdown-item" href="#" data-value="Earrings">Earrings</a></li>
+            </ul>
+        </div>
+
+        <div class="dropdown me-3">
+            <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="priceDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                Price
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="priceDropdown">
+                <li><a class="dropdown-item active" href="#" data-value="all">All Prices</a></li>
+                <li><a class="dropdown-item" href="#" data-value="under10000">Under ₹10000</a></li>
+                <li><a class="dropdown-item" href="#" data-value="10000-100000">₹10000 - ₹100000</a></li>
+                <li><a class="dropdown-item" href="#" data-value="over100000">Over ₹100000</a></li>
+            </ul>
+        </div>
+
+        <button class="btn btn-primary me-2" id="filterBtn">
+            <i class="fas fa-filter"></i> Filter
+        </button>
+
+        <button class="btn btn-outline-danger" id="resetBtn">
+            <i class="fas fa-undo"></i> Reset
+        </button>
+    </div>
+
+    <div class="product-table-container" style="margin-left: 270px; margin-right: 40px;">
+        <table class="table table-bordered table-hover">
+            <thead class="table-light">
+                <tr>
+                    <th width="50px"><input type="checkbox" onclick="toggleSelectAll(this)"></th>
+                    <th>Order ID</th>
+                    <th>Product Name</th>
+                    <th>Category</th>
+                    <th>Stock</th>
+                    <th>Product Image</th>
+                    <th>Shop By</th>
+                    <th>Price</th>
+                    <th>Discount</th>
+                    <th>GST</th>
+                    <th>Coupon Code</th>
+                    <th>Total Price</th>
+                    <th>Quantity</th>
+                    <th>Offers</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody id="productsTableBody">
+                <!-- Products will be inserted here dynamically -->
+            </tbody>
+        </table>
+    </div>
+
+    <div class="left-nav" id="leftNav">
+        <div class="category" id="catalog">Catalog <i class="fas fa-chevron-down" id="catalogToggle"></i></div>
+        <div class="sub-category" id="catalogSub">
+            <div>Products</div>
+            <div>Categories</div>
+            <div>Coupons</div>
+        </div>
+        <div class="category" id="customers">Customers <i class="fas fa-chevron-down" id="customersToggle"></i></div>
+        <div class="sub-category" id="customersSub">
+            <div>Customer Details</div>
+        </div>
+        <div class="category">Orders</div>
+        <div class="category" id="onlineStore">Online Store <i class="fas fa-chevron-down" id="onlineStoreToggle"></i></div>
+        <div class="sub-category" id="onlineStoreSub" style="display: none;">
+            <div>View Store</div>
+            <div>Store Customization</div>
+            <div>Store Settings</div>
+        </div>
+        <div class="category">Our Staff</div>
+        <div class="category" id="settings">Settings</div>
+        <button class="logout-button"> <i class="fas fa-sign-out-alt"></i> Logout</button>
+    </div>
+
+
+    <!-- Delete Confirmation Modal -->
+    <div class="modal fade" id="deleteConfirmationModal" tabindex="-1" aria-labelledby="deleteConfirmationModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header bg-danger text-white">
+                    <h5 class="modal-title" id="deleteConfirmationModalLabel">Confirm Deletion</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p id="deleteMessage">Are you sure you want to delete the selected items?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-danger" id="confirmDeleteBtn">Delete</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Product Modal -->
+    <div class="modal fade" id="addProductModal" tabindex="-1" aria-labelledby="addProductModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="addProductModalLabel">Add New Product</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="productForm">
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label for="orderId" class="form-label">Order ID</label>
+                                <input type="text" class="form-control" id="orderId" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="productName" class="form-label">Product Name</label>
+                                <input type="text" class="form-control" id="productName" required>
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label for="shopBy" class="form-label">Shop By</label>
+                                <select class="form-select" id="shopBy" multiple>
+                                    <option>Party Wear</option>
+                                    <option>Wedding Wear</option>
+                                    <option>Office Wear</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Category</label>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="rings">
+                                    <label class="form-check-label" for="rings">Rings</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="necklaces">
+                                    <label class="form-check-label" for="necklaces">Necklaces</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="earrings">
+                                    <label class="form-check-label" for="earrings">Earrings</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="bracelets">
+                                    <label class="form-check-label" for="bracelets">Bracelets</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label for="stock" class="form-label">Stock</label>
+                                <select class="form-select" id="stock" required>
+                                    <option>In Stock</option>
+                                    <option>Out of Stock</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="productImage" class="form-label">Product Image</label>
+                                <input type="file" class="form-control" id="productImage" accept="image/*">
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <div class="col-md-4">
+                                <label for="price" class="form-label">Price (₹)</label>
+                                <input type="number" class="form-control" id="price" step="0.01" required>
+                            </div>
+                            <div class="col-md-4">
+                                <label for="discount" class="form-label">Discount (%)</label>
+                                <input type="number" class="form-control" id="discount" step="0.01">
+                            </div>
+                            <div class="col-md-4">
+                                <label for="gst" class="form-label">GST (%)</label>
+                                <input type="number" class="form-control" id="gst" step="0.01" required>
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label for="couponCode" class="form-label">Coupon Code</label>
+                                <input type="text" class="form-control" id="couponCode">
+                            </div>
+                            <div class="col-md-4">
+                                <label for="totalPrice" class="form-label">Total Price (₹)</label>
+                                <input type="text" class="form-control" id="totalPrice" readonly>
+                            </div>
+                            <div class="col-md-4">
+                                <label for="quantity" class="form-label">Quantity</label>
+                                <input type="number" class="form-control" id="quantity" min="1" value="1" required>
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <div class="col-md-12">
+                                <label class="form-label">Offers</label>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="offerType" id="option1" value="option1" checked>
+                                    <label class="form-check-label" for="option1">Option 1</label>
+                                </div>
+                                <div id="option1Options" style="margin-left: 20px; margin-top: 10px;">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="offer1" value="Free Shipping">
+                                        <label class="form-check-label" for="offer1">Free Shipping</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="offer2" value="Buy 1 Get 1">
+                                        <label class="form-check-label" for="offer2">Buy 1 Get 1</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="offer3" value="10% Cashback">
+                                        <label class="form-check-label" for="offer3">10% Cashback</label>
+                                    </div>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="offerType" id="option2" value="option2">
+                                    <label class="form-check-label" for="option2">Option 2</label>
+                                </div>
+                                <div id="option2Input" style="margin-left: 20px; margin-top: 10px; display: none;">
+                                    <input type="number" class="form-control" id="offerValue" min="0" value="0" style="width: 100px;">
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary" id="addProductBtn">Add Product</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <footer style="background-color: #f0f0f0; height: 60px; display: flex; align-items: center; justify-content: center;font-family: Open Sans;">
+        <!-- <img src="Img/logo.jpg" alt="Kunash Media Logo" style="height: 40px;  width:60px ;margin-right: 15px;"> -->
+        <p style="color: black; font-weight: 400; margin: 0; font-size: medium;">© 2025 Kunash Media | Developed by Pranjal Prasad</p>
+    </footer>
+
+
+<script>
+
+// Replace the existing addProductBtn event listener with this:
+document.getElementById('addProductBtn').addEventListener('click', function() {
+    const isEditing = this.dataset.editingId;
+    const products = loadProducts();
+    
+    // Get form values
+    const orderId = document.getElementById('orderId').value;
+    const productName = document.getElementById('productName').value;
+    const shopByOptions = Array.from(document.getElementById('shopBy').selectedOptions)
+        .map(option => option.value).join(', ');
+    
+    // Get selected categories
+    const categories = [];
+    if (document.getElementById('rings').checked) categories.push('Rings');
+    if (document.getElementById('necklaces').checked) categories.push('Necklaces');
+    if (document.getElementById('earrings').checked) categories.push('Earrings');
+    if (document.getElementById('bracelets').checked) categories.push('Bracelets');
+
+    const productData = {
+        orderId,
+        productName,
+        categories: categories.join(', '),
+        stock: document.getElementById('stock').value,
+        imageSrc: 'https://via.placeholder.com/50', // Default or get from file input
+        shopByOptions,
+        price: document.getElementById('price').value,
+        discount: document.getElementById('discount').value,
+        gst: document.getElementById('gst').value,
+        couponCode: document.getElementById('couponCode').value,
+        totalPrice: document.getElementById('totalPrice').value,
+        quantity: document.getElementById('quantity').value,
+        offers: getSelectedOffers()
+    };
+
+    // Handle image if uploaded
+    const imageFile = document.getElementById('productImage').files[0];
+    if (imageFile) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            productData.imageSrc = e.target.result;
+            saveProduct();
+        }
+        reader.readAsDataURL(imageFile);
+    } else {
+        saveProduct();
+    }
+
+    function saveProduct() {
+        if (isEditing) {
+            // Update existing product
+            const index = products.findIndex(p => p.orderId === isEditing);
+            if (index !== -1) {
+                products[index] = productData;
+            }
+        } else {
+            // Add new product
+            products.push(productData);
+        }
+        
+        saveProducts(products);
+        renderProducts();
+        
+        // Close modal and reset
+        const modal = bootstrap.Modal.getInstance(document.getElementById('addProductModal'));
+        modal.hide();
+        document.getElementById('productForm').reset();
+        document.getElementById('totalPrice').value = '';
+        document.getElementById('addProductBtn').textContent = 'Add Product';
+        delete document.getElementById('addProductBtn').dataset.editingId;
+    }
+});
+
+// Replace the existing inventory button event listener with this:
+document.querySelectorAll('.inventory-btn').forEach(btn => {
+    btn.addEventListener('click', function() {
+        const row = this.closest('tr');
+        const orderId = row.cells[1].textContent;
+        const productName = row.cells[2].textContent;
+        const price = row.cells[7].textContent;
+        const quantity = row.cells[12].textContent;
+        const totalPrice = row.cells[11].textContent;
+        
+        // Create invoice modal
+        const invoiceModal = new bootstrap.Modal(document.getElementById('invoiceModal') || document.createElement('div'));
+        if (!document.getElementById('invoiceModal')) {
+            invoiceModal._element.id = 'invoiceModal';
+            invoiceModal._element.className = 'modal fade';
+            invoiceModal._element.innerHTML = `
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Invoice for ${productName}</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="invoice-details">
+                                <p><strong>Order ID:</strong> ${orderId}</p>
+                                <p><strong>Product:</strong> ${productName}</p>
+                              <p><strong>Unit Price:</strong> ₹${price}</p>
+                                <p><strong>Quantity:</strong> ${quantity}</p>
+                                <hr>
+                                <p class="text-end"><strong>Total:</strong> ₹${totalPrice}</p>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary" onclick="window.print()">Print Invoice</button>
+                        </div>
+                    </div>
+                </div>
+            `;
+            document.body.appendChild(invoiceModal._element);
+        }
+        invoiceModal.show();
+    });
+});
+// Update the filterProducts function:
+function filterProducts() {
+    const searchText = document.getElementById('searchInput').value.toLowerCase();
+    const activeCategoryItem = document.querySelector('#categoryDropdown + .dropdown-menu .active');
+    const activePriceItem = document.querySelector('#priceDropdown + .dropdown-menu .active');
+    
+    const selectedCategory = activeCategoryItem ? activeCategoryItem.getAttribute('data-value') : 'all';
+    const selectedPrice = activePriceItem ? activePriceItem.getAttribute('data-value') : 'all';
+
+    const products = loadProducts();
+    
+    const filteredProducts = products.filter(product => {
+        // Search filter
+        const matchesSearch = searchText === '' || 
+            product.orderId.toLowerCase().includes(searchText) || 
+            product.productName.toLowerCase().includes(searchText);
+        
+        // Category filter
+        const matchesCategory = selectedCategory === 'all' || 
+            product.categories.toLowerCase().includes(selectedCategory.toLowerCase());
+        
+        // Price filter
+        const price = parseFloat(product.price.replace('$', '').replace(',', ''));
+        let matchesPrice = true;
+        
+        if (selectedPrice === 'under10000') {
+            matchesPrice = price < 10000;
+        } else if (selectedPrice === '10000-100000') {
+            matchesPrice = price >= 10000 && price <= 100000;
+        } else if (selectedPrice === 'over100000') {
+            matchesPrice = price > 100000;
+        }
+        
+        return matchesSearch && matchesCategory && matchesPrice;
+    });
+    
+    renderProducts(filteredProducts);
+}
+
+
+// Update the resetFilters function:
+function resetFilters() {
+    document.getElementById('searchInput').value = '';
+    
+    // Reset dropdown selections
+    document.querySelectorAll('#categoryDropdown + .dropdown-menu .dropdown-item, #priceDropdown + .dropdown-menu .dropdown-item')
+        .forEach(item => item.classList.remove('active'));
+    document.querySelector('#categoryDropdown + .dropdown-menu .dropdown-item[data-value="all"]').classList.add('active');
+    document.querySelector('#priceDropdown + .dropdown-menu .dropdown-item[data-value="all"]').classList.add('active');
+    
+    // Update dropdown button text
+    document.getElementById('categoryDropdown').textContent = 'Category';
+    document.getElementById('priceDropdown').textContent = 'Price';
+    
+    // Render all products
+    renderProducts();
+    
+    // Close dropdowns if open
+    const categoryDropdown = bootstrap.Dropdown.getInstance(document.getElementById('categoryDropdown'));
+    const priceDropdown = bootstrap.Dropdown.getInstance(document.getElementById('priceDropdown'));
+    if (categoryDropdown) categoryDropdown.hide();
+    if (priceDropdown) priceDropdown.hide();
+}
+
+// Update the deleteSelectedBtn event listener:
+document.getElementById('deleteSelectedBtn').addEventListener('click', function() {
+    const selectedCheckboxes = document.querySelectorAll('.row-checkbox:checked');
+    if (selectedCheckboxes.length === 0) {
+        // Show a better alert using Bootstrap's toast
+        const toastEl = document.createElement('div');
+        toastEl.className = 'toast align-items-center text-white bg-danger';
+        toastEl.innerHTML = `
+            <div class="d-flex">
+                <div class="toast-body">
+                    Please select at least one product to delete
+                </div>
+                <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
+            </div>
+        `;
+        document.body.appendChild(toastEl);
+        const toast = new bootstrap.Toast(toastEl);
+        toast.show();
+        
+        // Remove toast after showing
+        setTimeout(() => {
+            toastEl.remove();
+        }, 3000);
+        return;
+    }
+
+    document.getElementById('deleteMessage').textContent =
+        `Are you sure you want to delete ${selectedCheckboxes.length} selected product(s)?`;
+
+    const deleteModal = new bootstrap.Modal(document.getElementById('deleteConfirmationModal'));
+    deleteModal.show();
+
+    document.getElementById('confirmDeleteBtn').onclick = function() {
+        const orderIds = Array.from(selectedCheckboxes).map(checkbox => {
+            return checkbox.closest('tr').cells[1].textContent;
+        });
+
+        const products = loadProducts();
+        const updatedProducts = products.filter(p => !orderIds.includes(p.orderId));
+        saveProducts(updatedProducts);
+        renderProducts();
+        deleteModal.hide();
+        
+        // Uncheck select all checkbox if it was checked
+        document.querySelector('th input[type="checkbox"]').checked = false;
+    };
+});
+
+// Update the toggleSelectAll function:
+function toggleSelectAll(selectAllCheckbox) {
+    const checkboxes = document.querySelectorAll('.row-checkbox');
+    checkboxes.forEach(checkbox => {
+        checkbox.checked = selectAllCheckbox.checked;
+    });
+    
+    // Add event to individual checkboxes to update select all
+    checkboxes.forEach(checkbox => {
+        checkbox.addEventListener('change', function() {
+            const allChecked = document.querySelectorAll('.row-checkbox:checked').length === checkboxes.length;
+            document.querySelector('th input[type="checkbox"]').checked = allChecked;
+        });
+    });
+}
+
+
+    document.addEventListener('DOMContentLoaded', function() {
+        // Initialize with sample data if localStorage is empty
+        initializeSampleData();
+        renderProducts();
+
+        // Left nav toggle
+        document.getElementById('menuIcon').addEventListener('click', function() {
+            const leftNav = document.getElementById('leftNav');
+            leftNav.style.display = leftNav.style.display === 'block' ? 'none' : 'block';
+        });
+
+        // Profile menu toggle
+        document.getElementById('profileIcon').addEventListener('click', function(e) {
+            e.stopPropagation();
+            const menu = document.getElementById('profileMenu');
+            menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
+        });
+
+        // Close profile menu when clicking outside
+        document.addEventListener('click', function() {
+            document.getElementById('profileMenu').style.display = 'none';
+        });
+
+        // Submenu toggles
+        document.getElementById('onlineStoreToggle').addEventListener('click', function() {
+            const sub = document.getElementById('onlineStoreSub');
+            sub.style.display = sub.style.display === 'block' ? 'none' : 'block';
+        });
+        
+        document.getElementById('catalogToggle').addEventListener('click', function() {
+            const sub = document.getElementById('catalogSub');
+            sub.style.display = sub.style.display === 'block' ? 'none' : 'block';
+        });
+
+        document.getElementById('customersToggle').addEventListener('click', function() {
+            const sub = document.getElementById('customersSub');
+            sub.style.display = sub.style.display === 'block' ? 'none' : 'block';
+        });
+
+        // Initialize with sample data if localStorage is empty
+        function initializeSampleData() {
+            const sampleProducts = [
+                {
+    orderId: "ORD001",
+    productName: "Diamond Necklace",
+    categories: "Necklaces",
+    stock: "In Stock",
+    imageSrc: "https://via.placeholder.com/50",
+    shopByOptions: "Wedding Wear, Party Wear",
+    price: "25000.00",
+    discount: "10",
+    gst: "18",
+    couponCode: "DIAMOND10",
+    totalPrice: "24300.00",
+    quantity: "1",
+    offers: "Free Shipping, 10% Cashback"
+},
+{
+    orderId: "ORD002",
+    productName: "Gold Ring",
+    categories: "Rings",
+    stock: "In Stock",
+    imageSrc: "https://via.placeholder.com/50",
+    shopByOptions: "Wedding Wear",
+    price: "15000.00",
+    discount: "5",
+    gst: "18",
+    couponCode: "GOLD5",
+    totalPrice: "16237.50",
+    quantity: "2",
+    offers: "Buy 1 Get 1"
+}
+            ];
+
+            if (!localStorage.getItem('products')) {
+                localStorage.setItem('products', JSON.stringify(sampleProducts));
+            }
+        }
+
+        // Calculate total price when inputs change
+        document.getElementById('price').addEventListener('input', calculateTotal);
+        document.getElementById('discount').addEventListener('input', calculateTotal);
+        document.getElementById('gst').addEventListener('input', calculateTotal);
+        document.getElementById('quantity').addEventListener('input', calculateTotal);
+
+        function calculateTotal() {
+            const price = parseFloat(document.getElementById('price').value) || 0;
+            const discount = parseFloat(document.getElementById('discount').value) || 0;
+            const gst = parseFloat(document.getElementById('gst').value) || 0;
+            const quantity = parseInt(document.getElementById('quantity').value) || 1;
+
+            const discountAmount = price * (discount / 100);
+            const subtotal = (price - discountAmount) * quantity;
+            const gstAmount = subtotal * (gst / 100);
+            const total = subtotal + gstAmount;
+
+            document.getElementById('totalPrice').value = total.toFixed(2);
+        }
+
+        // Save products to localStorage
+        function saveProducts(products) {
+            localStorage.setItem('products', JSON.stringify(products));
+        }
+
+        // Load products from localStorage
+        function loadProducts() {
+            const products = JSON.parse(localStorage.getItem('products')) || [];
+            return products;
+        }
+
+        // Render products to table
+        function renderProducts(products = null) {
+            const tbody = document.getElementById('productsTableBody');
+            tbody.innerHTML = '';
+
+            const productsToRender = products || loadProducts();
+            
+            productsToRender.forEach(product => {
+                const newRow = document.createElement('tr');
+                newRow.innerHTML = `
+                    <td><input type="checkbox" class="row-checkbox"></td>
+                    <td>${product.orderId}</td>
+                    <td>${product.productName}</td>
+                    <td>${product.categories}</td>
+                    <td>${product.stock}</td>
+                    <td><img src="${product.imageSrc}" alt="Product" style="width:50px;height:50px;"></td>
+                    <td>${product.shopByOptions}</td>
+                    <td>₹${product.price}</td>
+                    <td>${product.discount}%</td>
+                    <td>${product.gst}%</td>
+                    <td>${product.couponCode}</td>
+                    <td>₹${product.totalPrice}</td>
+                    <td>${product.quantity}</td>
+                    <td>${product.offers || ''}</td>
+                    <td class="action-buttons">
+                        <button class="btn btn-sm btn-outline-info inventory-btn" title="Inventory"><i class="fas fa-box"></i></button>
+                        <button class="btn btn-sm btn-outline-primary edit-btn"><i class="fas fa-edit"></i></button>
+                        <button class="btn btn-sm btn-outline-danger delete-btn"><i class="fas fa-trash"></i></button>
+                    </td>
+
+                `;
+                tbody.appendChild(newRow);
+            });
+
+            // Add event listeners to all delete buttons
+            document.querySelectorAll('.delete-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const row = this.closest('tr');
+                    const orderId = row.cells[1].textContent;
+                    document.getElementById('deleteMessage').textContent = `Are you sure you want to delete product ${orderId}?`;
+
+                    const deleteModal = new bootstrap.Modal(document.getElementById('deleteConfirmationModal'));
+                    deleteModal.show();
+
+                    document.getElementById('confirmDeleteBtn').onclick = function() {
+                        const products = loadProducts();
+                        const updatedProducts = products.filter(p => p.orderId !== orderId);
+                        saveProducts(updatedProducts);
+                        renderProducts();
+                        deleteModal.hide();
+                    };
+                });
+            });
+
+            // Add event listeners to all inventory buttons
+            document.querySelectorAll('.inventory-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const row = this.closest('tr');
+                    const orderId = row.cells[1].textContent;
+                    const productName = row.cells[2].textContent;
+                    alert(`Inventory management for ${productName} (${orderId})`);
+                });
+            });
+        }
+// Add event listeners to all edit buttons
+document.querySelectorAll('.edit-btn').forEach(btn => {
+    btn.addEventListener('click', function() {
+        const row = this.closest('tr');
+        const orderId = row.cells[1].textContent;
+        const products = loadProducts();
+        const productToEdit = products.find(p => p.orderId === orderId);
+        
+        if (productToEdit) {
+            // Populate the modal with product data
+            document.getElementById('orderId').value = productToEdit.orderId;
+            document.getElementById('productName').value = productToEdit.productName;
+            
+            // Set shop by options
+            const shopBySelect = document.getElementById('shopBy');
+            Array.from(shopBySelect.options).forEach(option => {
+                option.selected = productToEdit.shopByOptions.includes(option.value);
+            });
+            
+            // Set categories checkboxes
+            document.getElementById('rings').checked = productToEdit.categories.includes('Rings');
+            document.getElementById('necklaces').checked = productToEdit.categories.includes('Necklaces');
+            document.getElementById('earrings').checked = productToEdit.categories.includes('Earrings');
+            document.getElementById('bracelets').checked = productToEdit.categories.includes('Bracelets');
+            
+            document.getElementById('stock').value = productToEdit.stock;
+            document.getElementById('price').value = productToEdit.price;
+            document.getElementById('discount').value = productToEdit.discount;
+            document.getElementById('gst').value = productToEdit.gst;
+            document.getElementById('couponCode').value = productToEdit.couponCode;
+            document.getElementById('totalPrice').value = productToEdit.totalPrice;
+            document.getElementById('quantity').value = productToEdit.quantity;
+            
+            // Set offers (simplified for demo)
+            if (productToEdit.offers.includes('Free Shipping')) {
+                document.getElementById('offer1').checked = true;
+            }
+            if (productToEdit.offers.includes('Buy 1 Get 1')) {
+                document.getElementById('offer2').checked = true;
+            }
+            if (productToEdit.offers.includes('10% Cashback')) {
+                document.getElementById('offer3').checked = true;
+            }
+            
+            // Change modal title and button
+            document.getElementById('addProductModalLabel').textContent = 'Edit Product';
+            document.getElementById('addProductBtn').textContent = 'Update Product';
+            
+            // Store the orderId of the product being edited
+            document.getElementById('addProductBtn').dataset.editingId = orderId;
+            
+            // Show the modal
+            const editModal = new bootstrap.Modal(document.getElementById('addProductModal'));
+            editModal.show();
+        }
+    });
+});
+        // Toggle select all checkboxes
+        function toggleSelectAll(selectAllCheckbox) {
+            const checkboxes = document.querySelectorAll('.row-checkbox');
+            checkboxes.forEach(checkbox => {
+                checkbox.checked = selectAllCheckbox.checked;
+            });
+        }
+
+        // Get selected offers from form
+        function getSelectedOffers() {
+            if (document.getElementById('option1').checked) {
+                const selected = [];
+                if (document.getElementById('offer1').checked) selected.push('Free Shipping');
+                if (document.getElementById('offer2').checked) selected.push('Buy 1 Get 1');
+                if (document.getElementById('offer3').checked) selected.push('10% Cashback');
+                return selected.join(', ');
+            } else {
+                return 'Discount: ' + document.getElementById('offerValue').value + '%';
+            }
+        }
+
+        // Filter products based on search, category, and price
+        function filterProducts() {
+            const searchText = document.getElementById('searchInput').value.toLowerCase();
+            const categoryElement = document.querySelector('#categoryDropdown + .dropdown-menu .active');
+            const priceElement = document.querySelector('#priceDropdown + .dropdown-menu .active');
+            
+            const selectedCategory = categoryElement ? categoryElement.getAttribute('data-value') : 'all';
+            const selectedPrice = priceElement ? priceElement.getAttribute('data-value') : 'all';
+
+            const products = loadProducts();
+            
+            const filteredProducts = products.filter(product => {
+                // Search filter
+                const matchesSearch = searchText === '' || 
+                    product.orderId.toLowerCase().includes(searchText) || 
+                    product.productName.toLowerCase().includes(searchText);
+                
+                // Category filter
+                const matchesCategory = selectedCategory === 'all' || 
+                    product.categories.includes(selectedCategory);
+                
+                // Price filter
+                const price = parseFloat(product.price);
+                let matchesPrice = true;
+                
+                if (selectedPrice === 'under10000') {
+                    matchesPrice = price < 10000;
+                } else if (selectedPrice === '10000-100000') {
+                    matchesPrice = price >= 10000 && price <= 100000;
+                } else if (selectedPrice === 'over100000') {
+                    matchesPrice = price > 100000;
+                }
+                
+                return matchesSearch && matchesCategory && matchesPrice;
+            });
+            
+            renderProducts(filteredProducts);
+        }
+
+        // Reset filters and show all products
+        function resetFilters() {
+            document.getElementById('searchInput').value = '';
+            
+            // Reset dropdown selections
+            document.querySelectorAll('#categoryDropdown + .dropdown-menu .dropdown-item, #priceDropdown + .dropdown-menu .dropdown-item')
+                .forEach(item => item.classList.remove('active'));
+            document.querySelectorAll('#categoryDropdown + .dropdown-menu .dropdown-item[data-value="all"], #priceDropdown + .dropdown-menu .dropdown-item[data-value="all"]')
+                .forEach(item => item.classList.add('active'));
+            
+            // Update dropdown button text
+            document.getElementById('categoryDropdown').textContent = 'Category';
+            document.getElementById('priceDropdown').textContent = 'Price';
+            
+            // Render all products
+            renderProducts();
+        }
+
+        // Add product button
+        document.getElementById('addProductBtn').addEventListener('click', function() {
+            // Get form values
+            const orderId = document.getElementById('orderId').value;
+            const productName = document.getElementById('productName').value;
+
+            // Get selected shop by options
+            const shopByOptions = Array.from(document.getElementById('shopBy').selectedOptions)
+                .map(option => option.value).join(', ');
+
+            // Get selected categories
+            const categories = [];
+            if (document.getElementById('rings').checked) categories.push('Rings');
+            if (document.getElementById('necklaces').checked) categories.push('Necklaces');
+            if (document.getElementById('earrings').checked) categories.push('Earrings');
+            if (document.getElementById('bracelets').checked) categories.push('Bracelets');
+
+            const stock = document.getElementById('stock').value;
+            const price = document.getElementById('price').value;
+            const discount = document.getElementById('discount').value;
+            const gst = document.getElementById('gst').value;
+            const couponCode = document.getElementById('couponCode').value;
+            const totalPrice = document.getElementById('totalPrice').value;
+
+            // Get image file
+            const imageFile = document.getElementById('productImage').files[0];
+            let imageSrc = 'https://via.placeholder.com/50';
+
+            if (imageFile) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    imageSrc = e.target.result;
+                    addTableRow(imageSrc);
+                }
+                reader.readAsDataURL(imageFile);
+            } else {
+                addTableRow(imageSrc);
+            }
+
+            function addTableRow(imgSrc) {
+                const products = loadProducts();
+                const newProduct = {
+                    orderId,
+                    productName,
+                    categories: categories.join(', '),
+                    stock,
+                    imageSrc: imgSrc,
+                    shopByOptions,
+                    price,
+                    discount,
+                    gst,
+                    couponCode,
+                    totalPrice,
+                    quantity: document.getElementById('quantity').value,
+                    offers: getSelectedOffers()
+                };
+                products.push(newProduct);
+                saveProducts(products);
+                renderProducts();
+
+                // Close modal and reset form
+                const modal = bootstrap.Modal.getInstance(document.getElementById('addProductModal'));
+                modal.hide();
+                document.getElementById('productForm').reset();
+                document.getElementById('totalPrice').value = '';
+            }
+        });
+
+        // Delete selected products
+        document.getElementById('deleteSelectedBtn').addEventListener('click', function() {
+            const selectedCheckboxes = document.querySelectorAll('.row-checkbox:checked');
+            if (selectedCheckboxes.length === 0) {
+                alert('Please select at least one product to delete');
+                return;
+            }
+
+            document.getElementById('deleteMessage').textContent =
+                `Are you sure you want to delete ${selectedCheckboxes.length} selected product(s)?`;
+
+            const deleteModal = new bootstrap.Modal(document.getElementById('deleteConfirmationModal'));
+            deleteModal.show();
+
+            document.getElementById('confirmDeleteBtn').onclick = function() {
+                const orderIds = Array.from(selectedCheckboxes).map(checkbox => {
+                    return checkbox.closest('tr').cells[1].textContent;
+                });
+
+                const products = loadProducts();
+                const updatedProducts = products.filter(p => !orderIds.includes(p.orderId));
+                saveProducts(updatedProducts);
+                renderProducts();
+                deleteModal.hide();
+            };
+        });
+
+        // Filter button
+        document.getElementById('filterBtn').addEventListener('click', filterProducts);
+        
+        // Search button
+        document.getElementById('searchBtn').addEventListener('click', filterProducts);
+        
+        // Also filter when pressing Enter in search input
+        document.getElementById('searchInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                filterProducts();
+            }
+        });
+
+        // Reset button
+        document.getElementById('resetBtn').addEventListener('click', resetFilters);
+
+        // Category dropdown items
+        document.querySelectorAll('#categoryDropdown + .dropdown-menu .dropdown-item').forEach(item => {
+            item.addEventListener('click', function() {
+                const categoryText = this.textContent;
+                document.getElementById('categoryDropdown').textContent = categoryText;
+                filterProducts();
+            });
+        });
+
+        // Price dropdown items
+        document.querySelectorAll('#priceDropdown + .dropdown-menu .dropdown-item').forEach(item => {
+            item.addEventListener('click', function() {
+                const priceText = this.textContent;
+                document.getElementById('priceDropdown').textContent = priceText;
+                filterProducts();
+            });
+        });
+
+        // Import file handler
+        window.handleImport = function() {
+            const fileInput = document.getElementById('fileInput');
+            if (fileInput.files.length > 0) {
+                alert(`Importing ${fileInput.files.length} file(s)`);
+                // Here you would typically process the file and add products
+            } else {
+                alert('Please select files first');
+            }
+        };
+    });
+
+    function saveProducts(products) {
+    try {
+        // Try to save normally
+        localStorage.setItem('products', JSON.stringify(products));
+    } catch (error) {
+        if (error.name === 'QuotaExceededError') {
+            // If storage is full, show an alert
+            alert("Storage is full! Clearing old data...");
+            
+            // Clear old data and try again
+            localStorage.clear();
+            localStorage.setItem('products', JSON.stringify(products));
+        } else {
+            // For other errors, show a different message
+            alert("Error saving products: " + error.message);
+        }
+    }
+}
+
+
+// Update the edit button event listener in your existing code
+document.querySelectorAll('.edit-btn').forEach(btn => {
+    btn.addEventListener('click', function() {
+        const row = this.closest('tr');
+        const orderId = row.cells[1].textContent;
+        const products = loadProducts();
+        const productToEdit = products.find(p => p.orderId === orderId);
+        
+        if (productToEdit) {
+            // Populate the modal with product data
+            document.getElementById('orderId').value = productToEdit.orderId;
+            document.getElementById('productName').value = productToEdit.productName;
+            
+            // Set shop by options
+            const shopBySelect = document.getElementById('shopBy');
+            const shopByOptions = productToEdit.shopByOptions.split(',').map(s => s.trim());
+            Array.from(shopBySelect.options).forEach(option => {
+                option.selected = shopByOptions.includes(option.value);
+            });
+            
+            // Set categories checkboxes
+            document.getElementById('rings').checked = productToEdit.categories.includes('Rings');
+            document.getElementById('necklaces').checked = productToEdit.categories.includes('Necklaces');
+            document.getElementById('earrings').checked = productToEdit.categories.includes('Earrings');
+            document.getElementById('bracelets').checked = productToEdit.categories.includes('Bracelets');
+            
+            document.getElementById('stock').value = productToEdit.stock;
+            document.getElementById('price').value = parseFloat(productToEdit.price.replace('₹', ''));
+            document.getElementById('discount').value = parseFloat(productToEdit.discount);
+            document.getElementById('gst').value = parseFloat(productToEdit.gst);
+            document.getElementById('couponCode').value = productToEdit.couponCode;
+            document.getElementById('totalPrice').value = parseFloat(productToEdit.totalPrice.replace('₹', ''));
+            document.getElementById('quantity').value = productToEdit.quantity;
+            
+            // Set offers (simplified for demo)
+            if (productToEdit.offers) {
+                if (productToEdit.offers.includes('Free Shipping')) {
+                    document.getElementById('offer1').checked = true;
+                }
+                if (productToEdit.offers.includes('Buy 1 Get 1')) {
+                    document.getElementById('offer2').checked = true;
+                }
+                if (productToEdit.offers.includes('10% Cashback')) {
+                    document.getElementById('offer3').checked = true;
+                }
+            }
+            
+            // Change modal title and button
+            document.getElementById('addProductModalLabel').textContent = 'Edit Product';
+            document.getElementById('addProductBtn').textContent = 'Update Product';
+            
+            // Store the orderId of the product being edited
+            document.getElementById('addProductBtn').dataset.editingId = orderId;
+            
+            // Show the modal
+            const editModal = new bootstrap.Modal(document.getElementById('addProductModal'));
+            editModal.show();
+        }
+    });
+});
+    </script>
+
+    <!-- Add this right before the closing </body> tag -->
+<script src="https://cdn.sheetjs.com/xlsx-0.19.3/package/dist/xlsx.full.min.js"></script>
+<script>
+    // Export functionality
+    document.addEventListener('DOMContentLoaded', function() {
+        // Add event listeners to export dropdown items
+        document.querySelectorAll('.dropdown-item').forEach(item => {
+            if (item.textContent.includes('Excel')) {
+                item.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    exportToExcel();
+                });
+            } else if (item.textContent.includes('CSV')) {
+                item.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    exportToCSV();
+                });
+            }
+        });
+
+        function exportToExcel() {
+            // Get table data
+            const table = document.querySelector('.product-table-container table');
+            const workbook = XLSX.utils.table_to_book(table);
+            XLSX.writeFile(workbook, 'products_export.xlsx');
+        }
+
+        function exportToCSV() {
+            // Get table data
+            const table = document.querySelector('.product-table-container table');
+            const worksheet = XLSX.utils.table_to_sheet(table);
+            const csv = XLSX.utils.sheet_to_csv(worksheet);
+            
+            // Create download link
+            const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+            const link = document.createElement("a");
+            const url = URL.createObjectURL(blob);
+            link.setAttribute("href", url);
+            link.setAttribute("download", "products_export.csv");
+            link.style.visibility = 'hidden';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+    });
+</script>
+
+</body>
+</html>
